@@ -1,24 +1,27 @@
 object RecursiveActivity extends App {
 
-def gcd(x: Int, y: Int): Int = {
-    if(y == 0)
-      return x
-    return gcd(y, x%y)
-  }
-
+  // Question 01
   def prime(p: Int, n: Int=2): Boolean = n match {
     case x if(p==x) => true
     case x if(gcd(p,x)>1) => false
     case x => prime(p, x+1)
   }
+  
+  def gcd(x: Int, y: Int): Int = {
+    if(y == 0)
+      return x
+    return gcd(y, x%y)
+  }
 
   // Question 02
   def primeSeq(p: Int): Unit = {
-    if(p>=0) {
-      prime(p)
+    if(p>1) {
       primeSeq(p-1)
+      if(prime(p))
+        print(p+" ")
     }
   }
+    
   // Question 03
   def sum(n: Int): Int = n match {
     case 0 => 0
@@ -55,7 +58,7 @@ def gcd(x: Int, y: Int): Int = {
   def fibSeries(n: Int): Unit = {
     if(n>=0){
       fibSeries(n-1)
-      println(fib(n))
+      print(fib(n)+" ")
     }
   }
   
@@ -67,11 +70,12 @@ def gcd(x: Int, y: Int): Int = {
 
     // Question 02
     println("Question 02")
-    //primeSeq(10)
+    primeSeq(10)
+    println()
 
     // Question 03
     println("Question 03")
-    sum(5)
+    println(sum(5))
 
     // Question 04
     println("Question 04")
@@ -86,4 +90,5 @@ def gcd(x: Int, y: Int): Int = {
     // Question 06
     println("Question 06")
     fibSeries(9)
+    println()
 }
